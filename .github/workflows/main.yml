@@ -1,0 +1,23 @@
+name: Test Multiple Rust Versions
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust-version: [1.66.0 ,1.66.1, 1.67.0]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Rust ${{ matrix.rust-version }}
+        uses: actions/setup-rust@v2
+        with:
+          rust-version: ${{ matrix.rust-version }}
+      - name: Format
+        run: |
+          make format
+      - name: Lint with clippy
+        run: |
+          make lint
+      - name: Build release
+        run: |
+          make build-release
