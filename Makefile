@@ -1,4 +1,5 @@
 format:
+	@rustup component add rustfmt 2> /dev/null
 	cargo fmt --quiet
 
 format-check:
