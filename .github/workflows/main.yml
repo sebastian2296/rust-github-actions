@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Rust ${{ matrix.rust-version }}
-        uses: actions/setup-rust@v2
+        uses: ATiltedTree/setup-rust@v1
         with:
           rust-version: ${{ matrix.rust-version }}
       - name: Format
